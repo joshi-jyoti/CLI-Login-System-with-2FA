@@ -1,4 +1,4 @@
-# Containerized CLI Login System with Optional 2FA
+# Containerized CLI Login System with 2FA
 
 A secure, interactive command-line login system written in Go. It supports user registration, username/password authentication, optional TOTP-based two-factor authentication (compatible with Google Authenticator, Authy, etc.), account lockout after repeated failed attempts, and configurable session timeouts — all backed by a SQLite database that persists across Docker container restarts.
 
