@@ -1,0 +1,13 @@
+# Compiled binary
+/cli-login-system
+
+# Local SQLite data if run outside Docker
+*.db
+*.db-shm
+*.db-wal
+/data/
+
+# Editor/OS cruft
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,28 @@
+services:
+  cli-login-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cli-login-system:latest
+    container_name: cli-login-system
+
+    # The app is an interactive terminal program, so stdin/tty must stay
+    # attached. Run it with:
+    #   docker compose run --rm cli-login-system
+    stdin_open: true
+    tty: true
+
+    environment:
+      DB_PATH: /data/app.db
+      SESSION_TIMEOUT_MINUTES: "30"
+      MAX_FAILED_ATTEMPTS: "5"
+      LOCKOUT_DURATION_MINUTES: "15"
+      TOTP_ISSUER: "CLI-Login-System"
+
+    volumes:
+      # Named volume so the SQLite database (and thus all registered
+      # users, sessions, etc.) survives container restarts/recreation.
+      - cli-login-data:/data
+
+volumes:
+  cli-login-data:
